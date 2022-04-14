@@ -1,0 +1,89 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+ /* cabeçalho */
+.cabecalho {
+    width: 100%;
+    max-width: 375px;
+    height: 80px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-principal {
+    width: 75px;
+    height: 53px;
+    margin-left: 22px;
+}
+
+.participantes {
+    font-size: 42px;
+    margin-right: 22px;
+}
+/* fim do cabeçalho */
+
+/* corpo da página */
+
+.corpo-mensagens {
+    width: 100%;
+    height: 100%;
+    max-width: 375px;
+    padding-top: 102px;
+    padding-bottom: 102px;
+    left: 0px;
+    background-color: #e5e5e5;
+}
+
+
+
+
+
+/* corpo da página */
+
+/* rodapé */
+.envio-mensagens {
+    width: 100%;
+    max-width: 375px;
+    height: 80px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.texto-mensagem {
+    width: 300px;
+    height: 30px;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin-left: 18px;
+    border-width:0px;
+    border:none;
+}
+
+.botao-envio-mensagens {
+    font-size: 26px;
+    margin-right: 18px;
+}
+/* fim do rodapé */
+
+
+
+
+
