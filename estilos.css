@@ -38,13 +38,119 @@ body {
     padding-bottom: 102px;
     left: 0px;
     background-color: #e5e5e5;
+    overflow-y: auto;
 }
 
+.mensagem-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background: #DCDCDC;
+    border-radius: 2px;
+    max-width: 375px;
+    min-height: 40px;
+}
 
+.horario-mensagem {
+    color: #AAAAAA;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #AAAAAA;
+}
 
+.usuario {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-right: 8px;
+}
 
+.mensagem {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
 
-/* corpo da página */
+.mensagem-privada
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background: #FFDEDE;
+    border-radius: 2px;
+    max-width: 375px;
+    min-height: 40px;
+}
+
+.mensagem-publica
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    max-width: 375px;
+    min-height: 40px;
+}
+
+.remetente {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-right: 8px;
+}
+
+.destinatario {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-right: 8px;
+}
+
+b {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin-right: 8px;
+}
+
+/* fim do corpo da página */
 
 /* rodapé */
 .envio-mensagens {
