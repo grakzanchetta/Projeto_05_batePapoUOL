@@ -91,7 +91,6 @@ function enviarMensagem() {
     
     promise.then(function(resposta){
         console.log(resposta.status);
-        console.log(infoMensagem);
         obterMensagens(resposta);
     });
       
