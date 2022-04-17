@@ -27,7 +27,7 @@ function obterMensagens(resposta){
             infoResposta = resposta.data;
             setInterval(obterMensagens, 3000);
             renderizarMensagens(infoResposta);
-            colocarUltimaMensagem();
+            scrollNoFim();
             return(infoResposta);    
         });
         promise.catch( erro => {
@@ -48,7 +48,7 @@ function renderizarMensagens(infoResposta){
         let mensagem = infoResposta[i].text;
         let tipo = infoResposta[i].type;
         let hora = infoResposta[i].time;
-    
+
         if(tipo === "status") {
             textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-status"><span class="horario-mensagem">${hora}</span><span class="usuario">${remetente}</span><span class="mensagem">${mensagem}</span> </li></ul>`
         }
@@ -63,14 +63,15 @@ function renderizarMensagens(infoResposta){
     
         lista.innerHTML += textoHTML;
     }
-
 }
 
-function colocarUltimaMensagem (){
-    const ultimo = document.querySelector(".corpo-mensagens .lista-mensagens");
-    const ultimaMensagem = ultimo.lastElementChild;
+function scrollNoFim() {
+    const ul = document.querySelector("main ul");
+    const ultimaMensagem = ul.lastElementChild;
     ultimaMensagem.scrollIntoView();
-}
+  }
+
+
 
 obterUsuário();
 
