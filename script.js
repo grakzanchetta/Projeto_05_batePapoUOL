@@ -97,11 +97,7 @@ function enviarMensagem() {
     input.value = ""; 
   }
 
-
-
 obterUsuário();
-
-
 
 
 
