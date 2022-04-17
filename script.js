@@ -69,6 +69,32 @@ function scrollNoFim() {
     const ul = document.querySelector("main ul");
     const ultimaMensagem = ul.lastElementChild;
     ultimaMensagem.scrollIntoView();
+}
+
+function enviarMensagem() {
+    const input = document.querySelector("footer input");
+    const mensagem = input.value;
+    const infoMensagem = {
+        from: usuario,
+        to: "Todos",
+        text: mensagem,
+        type: "message"
+      }
+    
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", infoMensagem);
+    
+    promise.catch(function (erro) {
+        alert("A mensagem não foi enviada! Por favor, entre novamente.");
+        window.location.reload();
+      });
+    
+    promise.then(function(resposta){
+        console.log(resposta.status);
+        console.log(infoMensagem);
+        obterMensagens(resposta);
+    });
+      
+    input.value = ""; 
   }
 
 
