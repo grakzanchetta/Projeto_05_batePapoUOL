@@ -84,6 +84,7 @@ function enviarMensagem() {
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", infoMensagem);
     
     promise.catch(function (erro) {
+        console.log(erro.response.status);
         alert("A mensagem não foi enviada! Por favor, entre novamente.");
         window.location.reload();
       });
