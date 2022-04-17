@@ -54,11 +54,11 @@ function renderizarMensagens(infoResposta){
         }
 
         if(tipo === "message") {
-            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-publica"><span class="horario-mensagem">(09:21:45)</span><span class="remetente">João</span><b>para</b><span class="destinatario">Maria</span><b>:</b><span class="mensagem">Esta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publica</span></li></ul>`
+            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-publica"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li></ul>`
         }
 
         if(tipo === "private_message") {
-            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-privada"><span class="horario-mensagem">(09:21:45)</span><span class="remetente">João</span><b>para</b><span class="destinatario">Maria</span><b>:</b><span class="mensagem">Esta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publicaEsta é uma mensagem publica</span></li></ul>`
+            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-privada"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li></ul>`
         }
     
         lista.innerHTML += textoHTML;
@@ -91,6 +91,7 @@ function enviarMensagem() {
     
     promise.then(function(resposta){
         console.log(resposta.status);
+        console.log(infoMensagem);
         obterMensagens(resposta);
     });
       
