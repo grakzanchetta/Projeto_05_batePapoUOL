@@ -4,7 +4,7 @@ body {
  /* cabeçalho */
 .cabecalho {
     width: 100%;
-    max-width: 375px;
+    /* max-width: 375px; */
     height: 80px;
     background: #FFFFFF;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
@@ -111,7 +111,7 @@ body {
     margin-bottom: 4px;
     background: #FFFFFF;
     border-radius: 2px;
-    max-width: 375px;
+    /* max-width: 375px; */
     min-height: 40px;
 }
 

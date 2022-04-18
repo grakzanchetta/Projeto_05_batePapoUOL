@@ -33,8 +33,7 @@ function renderizarMensagens(infoResposta){
     
     const lista = document.querySelector(".lista-de-mensagens");
     lista.innerHTML = "";
-    //let textoHTML = "";
-
+    
     for (let i = 0; i < infoResposta.length; i++){
         let remetente = infoResposta[i].from;
         let destinatario = infoResposta[i].to;
@@ -51,8 +50,10 @@ function renderizarMensagens(infoResposta){
         }
 
         if(tipo === "private_message") {
-            lista.innerHTML += `<li class="mensagem-privada"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li>`
-        }   // lista.innerHTML += textoHTML;
+            if ((destinatario === usuario) || (remetente === usuario)){
+                lista.innerHTML += `<li class="mensagem-privada"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li>`
+            }    
+        }   
     }
 }
  
