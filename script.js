@@ -3,44 +3,37 @@ let infoResposta = "";
 
 function obterUsuário (){
     usuario = prompt ("Digite seu nome");
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/participants", {name: usuario});
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", {name: usuario});
     promise.catch(obterUsuário);
-    promise.then(manterConexao);
-    promise.then(obterMensagens);
-    promise.then(renderizarMensagens);
+    promise.then(() => {
+        obterMensagens();
+        setInterval(obterMensagens, 3000);
+        setInterval(manterConexao, 5000);
+    });
 }
 
 function manterConexao(resposta) {
-	const statusCode = resposta.status;
-	console.log(statusCode);
-
-    setInterval (function (){
-        const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/status", {name: usuario});
+        const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: usuario});
         promise.then(resposta => console.log(resposta.status));
-        promise.catch(resposta => console.log(erro.resposta.status));
-    }, 5000);
+        promise.catch(resposta => console.log(resposta.status));
 }
 
 function obterMensagens(resposta){
-        const promise = axios.get("https://mock-api.driven.com.br/api/v4/uol/messages");
-        promise.then(resposta => { 
-            infoResposta = resposta.data;
-            setInterval(obterMensagens, 3000);
-            renderizarMensagens(infoResposta);
-            scrollNoFim();
-            return(infoResposta);    
+        const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+        promise.then((resposta) => { 
+            renderizarMensagens(resposta.data);
+            scrollNoFim(); 
         });
         promise.catch( erro => {
             alert(erro.resposta.status);
-        })        
+        })     
 }
 
 function renderizarMensagens(infoResposta){
     
     const lista = document.querySelector(".lista-de-mensagens");
     lista.innerHTML = "";
-
-    let textoHTML = null;
+    //let textoHTML = "";
 
     for (let i = 0; i < infoResposta.length; i++){
         let remetente = infoResposta[i].from;
@@ -50,21 +43,19 @@ function renderizarMensagens(infoResposta){
         let hora = infoResposta[i].time;
 
         if(tipo === "status") {
-            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-status"><span class="horario-mensagem">${hora}</span><span class="usuario">${remetente}</span><span class="mensagem">${mensagem}</span> </li></ul>`
+            lista.innerHTML += `<li class="mensagem-status"><span class="horario-mensagem">${hora}</span><span class="usuario">${remetente}</span><span class="mensagem">${mensagem}</span> </li>`
         }
 
         if(tipo === "message") {
-            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-publica"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li></ul>`
+            lista.innerHTML += `<li class="mensagem-publica"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li>`
         }
 
         if(tipo === "private_message") {
-            textoHTML = `<ul class = "lista-de-mensagens"><li class="mensagem-privada"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li></ul>`
-        }
-    
-        lista.innerHTML += textoHTML;
+            lista.innerHTML += `<li class="mensagem-privada"><span class="horario-mensagem">${hora}</span><span class="remetente">${remetente}</span><b>para</b><span class="destinatario">${destinatario}</span><b>:</b><span class="mensagem">${mensagem}</span></li>`
+        }   // lista.innerHTML += textoHTML;
     }
 }
-
+ 
 function scrollNoFim() {
     const ul = document.querySelector("main ul");
     const ultimaMensagem = ul.lastElementChild;
@@ -79,10 +70,9 @@ function enviarMensagem() {
         to: "Todos",
         text: mensagem,
         type: "message"
-      }
+    }
     
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages", infoMensagem);
-    
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", infoMensagem);
     promise.catch(function (erro) {
         console.log(erro.response.status);
         alert("A mensagem não foi enviada! Por favor, entre novamente.");
@@ -96,12 +86,6 @@ function enviarMensagem() {
     });
       
     input.value = ""; 
-  }
+}
 
 obterUsuário();
-
-
-
-
-
-
